@@ -1,37 +1,37 @@
 import mongoose from "mongoose";
 
-const schema = new mongoose.Schema({
-    first_name:{
-        type: String,
-        required: true
-    },
-    last_name: {
-        type: String,
-        required: true
-    },
-    email:{
-        type: String,
-        required: true,
-        unique: true,
-        index: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    age: {
-        type: Number,
-        required: true
-    },
-    cartId: crearCarrito(),
-    rol: {
-        type: String,
-        enum: ['admin', 'user'],
-        default:'user',
-        required: true 
-    }
-})
+const usuarioSchema = new mongoose.Schema({
+  first_name: {
+    type: String,
+    required: true,
+  },
+  last_name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    index: true,
+  },
+  password: String,
+  age: {
+    type: Number,
+    required: true,
+  },
+  cartId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "carts",
+    required: true,
+  },
+  rol: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user",
+  },
+});
 
-const UsuarioModel = mongoose.model('usuarios',schema);
+const UsuarioModel = mongoose.model("usuarios", usuarioSchema);
 
 export default UsuarioModel;

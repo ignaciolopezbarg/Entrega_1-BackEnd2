@@ -1,1 +1,10 @@
-<H1>DATOS DEL USUARIO REGISTRADO</H1>
+<header>
+
+  <h1>Profile</h1>
+
+  <div>
+    <p>   Bienvenido,  {{user.first_name}} - {{user.last_name}}!</p>
+    <p>Edad: {{user.age}} </p>
+    <a href="/api/sessions/logout">LOGOUT</a>
+  </div>
+</header>
